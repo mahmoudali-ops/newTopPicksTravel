@@ -1,0 +1,17 @@
+[
+  {
+    "ImageCarouselUrl": "images/tourImgs/giza1.jpg",
+    "IsActive": true,
+    "FK_TourId": 6
+  },
+  {
+    "ImageCarouselUrl": "images/tourImgs/hurghada1.jpg",
+    "IsActive": true,
+    "FK_TourId": 7
+  },
+  {
+    "ImageCarouselUrl": "images/tourImgs/luxor1.jpg",
+    "IsActive": true,
+    "FK_TourId": 8
+  }
+]

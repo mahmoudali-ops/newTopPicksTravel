@@ -1,0 +1,32 @@
+[
+  {
+    "TransferId": 1,
+    "Language": "en",
+    "Text": "Personal expenses"
+  },
+  {
+    "TransferId": 1,
+    "Language": "ar",
+    "Text": "المصاريف الشخصية"
+  },
+  {
+    "TransferId": 1,
+    "Language": "en",
+    "Text": "Tipping not included"
+  },
+  {
+    "TransferId": 1,
+    "Language": "ar",
+    "Text": "الإكراميات غير متضمنة"
+  },
+  {
+    "TransferId": 1,
+    "Language": "en",
+    "Text": "Optional activities"
+  },
+  {
+    "TransferId": 1,
+    "Language": "ar",
+    "Text": "الأنشطة الاختيارية"
+  }
+]

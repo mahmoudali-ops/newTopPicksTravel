@@ -1,0 +1,44 @@
+[
+  {
+    "TransferId": 1,
+    "Title": "Cairo port / Hotel",
+    "PrivtePrice": 50,
+    "SharedPrice": 48,
+    "Language": "en"
+  },
+  {
+    "TransferId": 1,
+    "Title": "مطار القتره  مرحبا / المنزل",
+    "PrivtePrice": 50,
+    "SharedPrice": 48,
+    "Language": "ar"
+  },
+  {
+    "TransferId": 1,
+    "Title": "مطار القتره / المنزل",
+    "PrivtePrice": 100,
+    "SharedPrice": 88,
+    "Language": "ar"
+  },
+  {
+    "TransferId": 1,
+    "Title": "Cairo port / Hotel",
+    "PrivtePrice": 100,
+    "SharedPrice": 88,
+    "Language": "en"
+  },
+  {
+    "TransferId": 2,
+    "Title": "Cairo port / Hotel home",
+    "PrivtePrice": 60,
+    "SharedPrice": 54,
+    "Language": "en"
+  },
+  {
+    "TransferId": 2,
+    "Title": "مطار القتره هنا /  لديكم المنزل",
+    "PrivtePrice": 100,
+    "SharedPrice": 88,
+    "Language": "ar"
+  }
+]

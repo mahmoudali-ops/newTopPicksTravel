@@ -1,0 +1,38 @@
+[
+  {
+    "Language": "en",
+    "Name": "Cairo Airport Transfer",
+    "Description": "Private car transfer from Cairo Airport to city hotels.",
+    "TransferId": 1
+  },
+  {
+    "Language": "ar",
+    "Name": "نقل من مطار القاهرة",
+    "Description": "نقل بسيارة خاصة من مطار القاهرة إلى فنادق المدينة.",
+    "TransferId": 1
+  },
+  {
+    "Language": "en",
+    "Name": "Hurghada Hotel Transfer",
+    "Description": "Door-to-door transfer from Hurghada hotels.",
+    "TransferId": 2
+  },
+  {
+    "Language": "ar",
+    "Name": "نقل من فنادق الغردقة",
+    "Description": "نقل من الباب إلى الباب من فنادق الغردقة.",
+    "TransferId": 2
+  },
+  {
+    "Language": "en",
+    "Name": "Luxor Day Transfer",
+    "Description": "Private transfer for Luxor day trips.",
+    "TransferId": 3
+  },
+  {
+    "Language": "ar",
+    "Name": "نقل يومي في الأقصر",
+    "Description": "نقل خاص للرحلات اليومية في الأقصر.",
+    "TransferId": 3
+  }
+]

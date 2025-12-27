@@ -1,0 +1,32 @@
+[
+  {
+    "TourId": 7,
+    "Language": "en",
+    "Text": "Snorkeling equipment"
+  },
+  {
+    "TourId": 7,
+    "Language": "ar",
+    "Text": "معدات الغطس"
+  },
+  {
+    "TourId": 6,
+    "Language": "en",
+    "Text": "Lunch on the boat Nile"
+  },
+  {
+    "TourId": 6,
+    "Language": "ar",
+    "Text": " وجبة غداء على القارب النيلي"
+  },
+  {
+    "TourId": 7,
+    "Language": "en",
+    "Text": "Soft drinks included"
+  },
+  {
+    "TourId": 8,
+    "Language": "ar",
+    "Text": "مشروبات خفيفة متضمنة"
+  }
+]

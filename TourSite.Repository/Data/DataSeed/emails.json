@@ -1,0 +1,26 @@
+[
+  {
+    "FullName": "Ali Hassan",
+    "EmailAddress": "ali.hassan@example.com",
+    "Message": "I want to book the Giza Pyramids tour for next week.",
+    "CreatedAt": "2025-01-02T00:00:00Z",
+    "BookingDate": "2025-01-09T00:00:00Z",
+    "FK_TourId": 6
+  },
+  {
+    "FullName": "Laura Becker",
+    "EmailAddress": "laura.b@example.com",
+    "Message": "Please send me details for the Hurghada diving trip.",
+    "CreatedAt": "2025-01-03T00:00:00Z",
+    "BookingDate": "2025-01-10T00:00:00Z",
+    "FK_TourId": 7
+  },
+  {
+    "FullName": "Omar Saleh",
+    "EmailAddress": "omar.saleh@example.com",
+    "Message": "Is the Luxor night tour available this Friday?",
+    "CreatedAt": "2025-01-04T00:00:00Z",
+    "BookingDate": "2025-01-11T00:00:00Z",
+    "FK_TourId": 8
+  }
+]

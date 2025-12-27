@@ -1,0 +1,38 @@
+[
+  {
+    "Language": "en",
+    "Name": "Cairo",
+    "Description": "The capital of Egypt, known for the Pyramids and Egyptian Museum.",
+    "DestinationId": 1
+  },
+  {
+    "Language": "ar",
+    "Name": "القاهرة",
+    "Description": "عاصمة مصر، تشتهر بالأهرامات والمتحف المصري.",
+    "DestinationId": 1
+  },
+  {
+    "Language": "en",
+    "Name": "Hurghada",
+    "Description": "Famous Red Sea resort city known for diving and beaches.",
+    "DestinationId": 2
+  },
+  {
+    "Language": "ar",
+    "Name": "الغردقة",
+    "Description": "مدينة منتجعية مشهورة على البحر الأحمر تشتهر بالغوص والشواطئ.",
+    "DestinationId": 2
+  },
+  {
+    "Language": "en",
+    "Name": "Luxor",
+    "Description": "The ancient city of Thebes, home to temples and tombs.",
+    "DestinationId": 3
+  },
+  {
+    "Language": "ar",
+    "Name": "الأقصر",
+    "Description": "المدينة القديمة طيبة، موطن المعابد والمقابر الفرعونية.",
+    "DestinationId": 3
+  }
+]

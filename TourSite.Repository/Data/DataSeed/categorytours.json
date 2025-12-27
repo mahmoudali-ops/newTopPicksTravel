@@ -1,0 +1,14 @@
+[
+  {
+    "ImageCover": "images/categories/historical.jpg",
+    "IsActive": true
+  },
+  {
+    "ImageCover": "images/categories/adventure.jpg",
+    "IsActive": true
+  },
+  {
+    "ImageCover": "images/categories/relax.jpg",
+    "IsActive": true
+  }
+]

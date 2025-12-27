@@ -1,0 +1,38 @@
+[
+  {
+    "Language": "en",
+    "Name": "Hilton Cairo",
+    "Description": "Luxury hotel overlooking the Nile.",
+    "HotelId": 1
+  },
+  {
+    "Language": "ar",
+    "Name": "هيلتون القاهرة",
+    "Description": "فندق فاخر يطل على نهر النيل.",
+    "HotelId": 1
+  },
+  {
+    "Language": "en",
+    "Name": "Hurghada Marriott",
+    "Description": "Seaside resort with private beach and diving center.",
+    "HotelId": 2
+  },
+  {
+    "Language": "ar",
+    "Name": "ماريوت الغردقة",
+    "Description": "منتجع على البحر مع شاطئ خاص ومركز غوص.",
+    "HotelId": 2
+  },
+  {
+    "Language": "en",
+    "Name": "Steigenberger Luxor",
+    "Description": "Elegant hotel near Luxor Temple.",
+    "HotelId": 3
+  },
+  {
+    "Language": "ar",
+    "Name": "شتايجنبرجر الأقصر",
+    "Description": "فندق أنيق بالقرب من معبد الأقصر.",
+    "HotelId": 3
+  }
+]

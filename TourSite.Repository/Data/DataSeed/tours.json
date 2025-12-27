@@ -1,0 +1,41 @@
+[
+  {
+    "ImageCover": "images/tours/giza.jpg",
+    "IsActive": true,
+    "Duration": 1,
+    "Price": 80,
+    "StartLocation": "Cairo Downtown",
+    "EndLocation": "Giza Plateau",
+    "LanguageOptions": "English,Arabic",
+    "CreatedAt": "2025-01-01T00:00:00Z",
+    "FK_CategoryID": 1,
+    "FK_UserID": "59ff4daa-d326-46e8-8ee1-2daee2969555",
+    "FK_DestinationID": 1
+  },
+  {
+    "ImageCover": "images/tours/hurghada-diving.jpg",
+    "IsActive": true,
+    "Duration": 1,
+    "Price": 120,
+    "StartLocation": "Hurghada Marina",
+    "EndLocation": "Giftun Island",
+    "LanguageOptions": "English,German",
+    "CreatedAt": "2025-01-01T00:00:00Z",
+    "FK_CategoryID": 2,
+    "FK_UserID": "6a609211-c5f4-4225-85f1-521d10b4f83a",
+    "FK_DestinationID": 2
+  },
+  {
+    "ImageCover": "images/tours/luxor-night.jpg",
+    "IsActive": true,
+    "Duration": 1,
+    "Price": 90,
+    "StartLocation": "Luxor Hotel",
+    "EndLocation": "Luxor Temple",
+    "LanguageOptions": "English,French",
+    "CreatedAt": "2025-01-01T00:00:00Z",
+    "FK_CategoryID": 1,
+    "FK_UserID": "752af32d-839d-4805-8c4a-16823f7e445f",
+    "FK_DestinationID": 3
+  }
+]

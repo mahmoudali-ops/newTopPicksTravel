@@ -1,0 +1,17 @@
+[
+  {
+    "ImageCover": "images/hotels/hilton-cairo.jpg",
+    "IsActive": true,
+    "FK_DestinationID": 1
+  },
+  {
+    "ImageCover": "images/hotels/hurghada-marriott.jpg",
+    "IsActive": true,
+    "FK_DestinationID": 2
+  },
+  {
+    "ImageCover": "images/hotels/steigenberger-luxor.jpg",
+    "IsActive": true,
+    "FK_DestinationID": 3
+  }
+]

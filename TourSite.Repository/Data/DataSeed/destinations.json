@@ -1,0 +1,14 @@
+[
+  {
+    "ImageCover": "images/destinations/cairo.jpg",
+    "IsActive": true
+  },
+  {
+    "ImageCover": "images/destinations/hurghada.jpg",
+    "IsActive": true
+  },
+  {
+    "ImageCover": "images/destinations/luxor.jpg",
+    "IsActive": true
+  }
+]

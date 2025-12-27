@@ -1,0 +1,32 @@
+[
+  {
+    "TransferId": 1,
+    "Language": "en",
+    "Text": "Explore Red Sea corals"
+  },
+  {
+    "TransferId": 1,
+    "Language": "ar",
+    "Text": "استكشف شعاب البحر الأحمر"
+  },
+  {
+    "TransferId": 1,
+    "Language": "en",
+    "Text": "Enjoy a boat ride"
+  },
+  {
+    "TransferId": 1,
+    "Language": "ar",
+    "Text": "استمتع بجولة بالقارب "
+  },
+  {
+    "TransferId": 1,
+    "Language": "en",
+    "Text": "Visit ancient temples"
+  },
+  {
+    "TransferId": 1,
+    "Language": "ar",
+    "Text": "قم بزيارة المعابد القديمة"
+  }
+]

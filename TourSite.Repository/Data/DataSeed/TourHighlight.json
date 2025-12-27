@@ -1,0 +1,32 @@
+[
+  {
+    "TourId": 7,
+    "Language": "en",
+    "Text": "Explore Red Sea corals"
+  },
+  {
+    "TourId": 7,
+    "Language": "ar",
+    "Text": "استكشف شعاب البحر الأحمر"
+  },
+  {
+    "TourId": 6,
+    "Language": "en",
+    "Text": "Enjoy a boat ride"
+  },
+  {
+    "TourId": 6,
+    "Language": "ar",
+    "Text": "استمتع بجولة بالقارب "
+  },
+  {
+    "TourId": 8,
+    "Language": "en",
+    "Text": "Visit ancient temples"
+  },
+  {
+    "TourId": 8,
+    "Language": "ar",
+    "Text": "قم بزيارة المعابد القديمة"
+  }
+]

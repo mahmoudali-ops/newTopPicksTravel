@@ -1,0 +1,38 @@
+[
+  {
+    "Language": "en",
+    "Title": "Giza Pyramids Tour",
+    "Description": "Visit the Great Pyramids and Sphinx with a professional guide.",
+    "TourId": 6
+  },
+  {
+    "Language": "ar",
+    "Title": "جولة أهرامات الجيزة",
+    "Description": "قم بزيارة الأهرامات العظيمة وأبو الهول مع دليل محترف.",
+    "TourId": 6
+  },
+  {
+    "Language": "en",
+    "Title": "Hurghada Diving Adventure",
+    "Description": "Enjoy a full day of diving in the Red Sea.",
+    "TourId": 7
+  },
+  {
+    "Language": "ar",
+    "Title": "مغامرة الغوص في الغردقة",
+    "Description": "استمتع بيوم كامل من الغوص في البحر الأحمر.",
+    "TourId": 7
+  },
+  {
+    "Language": "en",
+    "Title": "Luxor Temple by Night",
+    "Description": "Guided night visit to the famous Luxor Temple.",
+    "TourId": 8
+  },
+  {
+    "Language": "ar",
+    "Title": "معبد الأقصر ليلاً",
+    "Description": "زيارة ليلية مع مرشد إلى معبد الأقصر الشهير.",
+    "TourId": 8
+  }
+]

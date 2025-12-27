@@ -1,0 +1,17 @@
+[
+  {
+    "ImageCover": "images/transfers/transfer1.jpg",
+    "IsActive": true,
+    "FK_DestinationID": 1
+  },
+  {
+    "ImageCover": "images/transfers/transfer2.jpg",
+    "IsActive": true,
+    "FK_DestinationID": 2
+  },
+  {
+    "ImageCover": "images/transfers/transfer3.jpg",
+    "IsActive": true,
+    "FK_DestinationID": 3
+  }
+]

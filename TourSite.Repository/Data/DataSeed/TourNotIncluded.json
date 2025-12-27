@@ -1,0 +1,32 @@
+[
+  {
+    "TourId": 6,
+    "Language": "en",
+    "Text": "Personal expenses"
+  },
+  {
+    "TourId": 6,
+    "Language": "ar",
+    "Text": "المصاريف الشخصية"
+  },
+  {
+    "TourId": 7,
+    "Language": "en",
+    "Text": "Tipping not included"
+  },
+  {
+    "TourId": 7,
+    "Language": "ar",
+    "Text": "الإكراميات غير متضمنة"
+  },
+  {
+    "TourId": 8,
+    "Language": "en",
+    "Text": "Optional activities"
+  },
+  {
+    "TourId": 8,
+    "Language": "ar",
+    "Text": "الأنشطة الاختيارية"
+  }
+]

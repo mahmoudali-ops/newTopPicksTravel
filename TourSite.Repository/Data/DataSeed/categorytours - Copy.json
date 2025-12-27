@@ -1,0 +1,38 @@
+[
+  {
+    "Language": "en",
+    "Title": "Safari Tours",
+    "Description": "Explore the rich history of Egypt’s ancient civilization.",
+    "CategoryTourId": 1
+  },
+  {
+    "Language": "ar",
+    "Title": "رحلات السفاري",
+    "Description": "استكشف التاريخ الغني لحضارة مصر القديمة.",
+    "CategoryTourId": 1
+  },
+  {
+    "Language": "en",
+    "Title": "Diving Tours",
+    "Description": "Exciting outdoor activities like desert safaris and diving.",
+    "CategoryTourId": 2
+  },
+  {
+    "Language": "ar",
+    "Title": "رحلات الغوص",
+    "Description": "أنشطة خارجية مثيرة مثل رحلات السفاري الصحراوية والغوص.",
+    "CategoryTourId": 2
+  },
+  {
+    "Language": "en",
+    "Title": "Sea Tours",
+    "Description": "Peaceful and luxurious trips focused on relaxation.",
+    "CategoryTourId": 3
+  },
+  {
+    "Language": "ar",
+    "Title": "الرحلات البحرية",
+    "Description": "رحلات هادئة وفاخرة تركز على الاستجمام والراحة.",
+    "CategoryTourId": 3
+  }
+]
