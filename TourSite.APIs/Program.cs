@@ -41,13 +41,29 @@ namespace TourSite.APIs
                     });
             });
 
-            builder.Services.AddDependency( builder.Configuration);
+            builder.Services.AddControllers();
+            builder.Services.AddEndpointsApiExplorer();
+            builder.Services.AddSwaggerGen();
 
+            // ===== DI =====
+            builder.Services.AddDependency(builder.Configuration);
 
             var app = builder.Build();
 
+            // ===== Middlewares Order (??? ????) =====
+            app.UseRouting();
+
+            app.UseCors("AllowAngular");
+
+            app.UseSwagger();
+            app.UseSwaggerUI();
 
             await app.UseConfigurationMiddleWare();
+
+            app.UseAuthorization();
+
+            app.MapControllers();
+
 
 
             app.Run();

@@ -54,7 +54,7 @@ namespace TourSite.APIs.Controllers
 
             return Ok(transfer);
         }
-
+        // method to create new transfer
         [HttpPost("create")]
         public async Task<IActionResult> CreateHotel([FromForm] TransferCreateDto dto)
         {
