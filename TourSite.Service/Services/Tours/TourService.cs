@@ -137,6 +137,7 @@ namespace TourSite.Service.Services.Tours
                     CreatedAt = t.CreatedAt,
                     FK_CategoryID = t.FK_CategoryID,
                     FK_UserID = t.FK_UserID,
+                    IsActive = t.IsActive,
                     FK_DestinationID = t.FK_DestinationID,
                     Titles = t.Translations
                                 .Where(tr => tr.Language.ToLower() == lang)
@@ -520,62 +521,104 @@ namespace TourSite.Service.Services.Tours
                 }
             }
 
-            foreach (var translationDto in dto.IncludesPoints)
-            {
-                var existingTranslation = tour.Included
-                    .FirstOrDefault(t => t.Language.ToLower() == translationDto.Language.ToLower());
+            tour.Included.Clear();
 
-                if (existingTranslation != null)
+            foreach (var dtoItem in dto.IncludesPoints)
+            {
+                tour.Included.Add(new TourIncluded
                 {
-                    existingTranslation.Text = translationDto.Text;
-                }
-                else
+                    TourId = tour.Id,   // ✅ مش Id
+                    Language = dtoItem.Language.ToLower(),
+                    Text = dtoItem.Text
+                });
+            }
+
+
+            tour.NotIncluded.Clear();
+
+            foreach (var dtoItem in dto.NonIncludesPoints)
+            {
+                tour.NotIncluded.Add(new TourNotIncluded
                 {
-                    tour.Included.Add(new TourIncluded
+                    TourId = tour.Id,
+                    Language = dtoItem.Language.ToLower(),
+                    Text = dtoItem.Text
+                });
+            }
+
+
+            tour.Highlights.Clear();
+
+            foreach (var dtoItem in dto.hightlightPoints)
+            {
+                tour.Highlights.Add(new TourHighlight
+                {
+                    TourId = tour.Id,
+                    Language = dtoItem.Language.ToLower(),
+                    Text = dtoItem.Text
+                });
+            }
+
+            // ================================
+            // ✅ Update Tour Gallery Images
+            // ================================
+            if (dto.ImagesList != null && dto.ImagesList.Any())
+            {
+                // 🧹 مسح الصور القديمة (Translations هتتمسح Cascade)
+
+                tour.TourImgs.Clear();
+
+                foreach (var imgDto in dto.ImagesList)
+                {
+                    if (imgDto.ImageFile == null)
+                        continue;
+
+                    // 📂 مسار الرفع
+                    string uploadDir = Path.Combine(env.WebRootPath, "images/tourImgs");
+                    Directory.CreateDirectory(uploadDir);
+
+                    string fileName = Guid.NewGuid() + ".webp";
+                    string fullPath = Path.Combine(uploadDir, fileName);
+
+                    // 🖼️ معالجة الصورة
+                    using (var image = await Image.LoadAsync(imgDto.ImageFile.OpenReadStream()))
                     {
-                        Id=tour.Id,
-                        Language = translationDto.Language.ToLower(),
-                        Text = translationDto.Text
-                    });
+                        image.Mutate(x => x.Resize(1600, 900));
+                        await image.SaveAsync(fullPath, new WebpEncoder
+                        {
+                            Quality = 80
+                        });
+                    }
+
+                    string imageUrl = $"images/tourImgs/{fileName}";
+
+                    // 🔓 فك JSON الترجمات
+                    if (!string.IsNullOrEmpty(imgDto.TranslationsJson))
+                    {
+                        imgDto.Translations = JsonSerializer.Deserialize<List<TourImgTranslationDto>>(
+                            imgDto.TranslationsJson,
+                            new JsonSerializerOptions { PropertyNameCaseInsensitive = true }
+                        );
+                    }
+
+                    // 🧱 إنشاء كيان الصورة
+                    var tourImg = new TourImg
+                    {
+                        FK_TourId = tour.Id,
+                        IsActive = imgDto.IsActive,
+                        ImageCarouselUrl = imageUrl,
+                        Translations = imgDto.Translations?
+                            .Select(tr => new TourImgTranslation
+                            {
+                                Language = tr.Language.ToLower(),
+                                Title = tr.Title,
+                                TourName = tr.TourName
+                            }).ToList() ?? new()
+                    };
+
+                    tour.TourImgs.Add(tourImg);
                 }
             }
-
-            foreach (var translationDto in dto.NonIncludesPoints)
-            {
-                var existingTranslation = tour.NotIncluded
-                    .FirstOrDefault(t => t.Language.ToLower() == translationDto.Language.ToLower());
-                if (existingTranslation != null)
-                {
-                    existingTranslation.Text = translationDto.Text;
-                }
-                else
-                {
-                    tour.NotIncluded.Add(new TourNotIncluded
-                    {    Id = tour.Id,
-                        Language = translationDto.Language.ToLower(),
-                        Text = translationDto.Text
-                    });
-                }
-            }
-
-            foreach (var translationDto in dto.hightlightPoints)
-            {
-                var existingTranslation = tour.Highlights
-                    .FirstOrDefault(t => t.Language.ToLower() == translationDto.Language.ToLower());
-                if (existingTranslation != null)
-                {
-                    existingTranslation.Text = translationDto.Text;
-                }
-                else
-                {
-                    tour.Highlights.Add(new TourHighlight
-                    {   Id = tour.Id,  
-                        Language = translationDto.Language.ToLower(),
-                        Text = translationDto.Text
-                    });
-                }
-            }
-
 
             // ✅ تحديث الكيان
             unitOfWork.Repository<Tour>().Update(tour);

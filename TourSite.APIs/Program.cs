@@ -55,14 +55,16 @@ namespace TourSite.APIs
 
             app.UseCors("AllowAngular");
 
+            app.UseAuthentication();   // ? ???? ??? Authorization
+            app.UseAuthorization();    // ?
+
             app.UseSwagger();
             app.UseSwaggerUI();
 
             await app.UseConfigurationMiddleWare();
 
-            app.UseAuthorization();
-
             app.MapControllers();
+
 
 
 

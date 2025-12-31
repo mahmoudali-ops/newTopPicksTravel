@@ -46,13 +46,13 @@ namespace TourSite.Core.Entities
         [ForeignKey(nameof(FK_DestinationID))]
         public Destination Destination { get; set; }
 
-        public ICollection<TourImg> TourImgs { get; set; }
-        public ICollection<Email> Emails { get; set; }
-        public ICollection<TourTranslation> Translations { get; set; }
+        public ICollection<TourImg> TourImgs { get; set; } =new List<TourImg>();
+        public ICollection<Email> Emails { get; set; } = new List<Email>();
+        public ICollection<TourTranslation> Translations { get; set; } = new List<TourTranslation>();
 
-        public ICollection<TourIncluded> Included { get; set; }
-        public ICollection<TourNotIncluded> NotIncluded { get; set; }
-        public ICollection<TourHighlight> Highlights { get; set; }
+        public ICollection<TourIncluded> Included { get; set; } = new List<TourIncluded>();
+        public ICollection<TourNotIncluded> NotIncluded { get; set; } = new List<TourNotIncluded>();
+        public ICollection<TourHighlight> Highlights { get; set; } = new List<TourHighlight>();
 
 
 
