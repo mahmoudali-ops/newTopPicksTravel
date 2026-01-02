@@ -23,7 +23,8 @@ namespace TourSite.Core.DTOs.Transfer
 
         public int? FK_DestinationID { get; set; }
         public string DestinationName { get; set; }
-
+        public string? MetaDescription { get; set; }
+        public string? MetaKeyWords { get; set; }
         public string Names { get; set; }
         public string Descriptions { get; set; }
 

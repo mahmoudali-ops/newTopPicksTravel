@@ -122,7 +122,9 @@ namespace TourSite.APIs.Controllers
         {
             Language = t.Language,
             Name = t.Name,
-            Description = t.Description
+            Description = t.Description,
+            MetaDescription = t.MetaDescription,    
+            MetaKeyWords = t.MetaKeyWords
         }).ToList() ?? new(),
 
                 PricesList = transfer.PricesList?

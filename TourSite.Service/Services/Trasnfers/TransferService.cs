@@ -51,27 +51,128 @@ namespace TourSite.Service.Services.Trasnfers
 
         public async Task<PageinationResponse<TransferAllDto>> GetAllTransToursAsync(TrasferSpecParam specParams)
         {
-            var allowedLangs = new[] { "en", "ar" };
+            var allowedLangs = new[] { "en", "de","nl" };
             if (string.IsNullOrEmpty(specParams.Lang) || !allowedLangs.Contains(specParams.Lang.ToLower()))
                 specParams.Lang = "en";
 
-            var spec = new TransferSpecification(specParams);
-            var allData = await unitOfWork.Repository<Transfer>().GetAllSpecAsync(spec);
+            string lang = specParams.Lang.ToLower();
 
-            if (allData is null) return null;
+            var query = unitOfWork.Repository<Transfer>()
+                .Query()
+                .Where(t => t.IsActive) // شرط عام
+                .AsNoTracking();
 
-            // ✅ استخدم AutoMapper مباشرة مع الـ language
-            var data = mapper.Map<IEnumerable<TransferAllDto>>(allData, opt =>
-                opt.Items["Lang"] = specParams.Lang.ToLower()
+            // ✅ Pagination
+            int skip = specParams.pageSize * (specParams.pageIndex - 1);
+            int take = specParams.pageSize;
+
+            // ✅ Projection مباشر
+            var dataQuery = query
+                .OrderBy(t => t.Id)
+                .Skip(skip)
+                .Take(take)
+                .Select(t => new TransferAllDto
+                {
+                    Id = t.Id,
+                    Slug = t.Slug,
+                    ImageCover = $"{configuration["BaseUrl"]}{t.ImageCover}",
+                    IsActive = t.IsActive,
+
+                    FK_DestinationID = t.FK_DestinationID,
+                    DestinationName = t.Destination.Translations
+                        .Where(d => d.Language.ToLower() == lang)
+                        .Select(d => d.Name)
+                        .FirstOrDefault()
+                        ?? t.Destination.Translations.FirstOrDefault().Name,
+
+                    Names = t.Translations
+                        .Where(tr => tr.Language.ToLower() == lang)
+                        .Select(tr => tr.Name)
+                        .FirstOrDefault()
+                        ?? t.Translations.FirstOrDefault().Name,
+
+                    Descriptions = t.Translations
+                        .Where(tr => tr.Language.ToLower() == lang)
+                        .Select(tr => tr.Description)
+                        .FirstOrDefault()
+                        ?? t.Translations.FirstOrDefault().Description
+                });
+
+            var data = await dataQuery.ToListAsync();
+
+            // ✅ Count خفيف
+            int totalCount = await query.CountAsync();
+
+            return new PageinationResponse<TransferAllDto>(
+                specParams.pageIndex,
+                specParams.pageSize,
+                totalCount,
+                data
             );
-
-            // Count بدون ترجمات
-            var CountSpec = new TransferWithCountSpecifications(specParams);
-            var Count = await unitOfWork.Repository<Transfer>().GetCountAsync(CountSpec);
-
-            return new PageinationResponse<TransferAllDto>(specParams.pageIndex, specParams.pageSize, Count, data);
-
         }
+
+
+        public async Task<PageinationResponse<TransferAllDto>> GetAllTransToursAdminAsync(TrasferSpecParam specParams)
+        {
+            var allowedLangs = new[] { "en", "de","nl" };
+            if (string.IsNullOrEmpty(specParams.Lang) || !allowedLangs.Contains(specParams.Lang.ToLower()))
+                specParams.Lang = "en";
+
+            string lang = specParams.Lang.ToLower();
+
+            var query = unitOfWork.Repository<Transfer>()
+                .Query()
+                .AsNoTracking();
+
+            // ✅ Pagination
+            int skip = specParams.pageSize * (specParams.pageIndex - 1);
+            int take = specParams.pageSize;
+
+            // ✅ Projection مباشر
+            var dataQuery = query
+                .OrderBy(t => t.Id)
+                .Skip(skip)
+                .Take(take)
+                .Select(t => new TransferAllDto
+                {
+                    Id = t.Id,
+                    Slug = t.Slug,
+                    ImageCover = $"{configuration["BaseUrl"]}{t.ImageCover}",
+                    IsActive = t.IsActive,
+
+                    FK_DestinationID = t.FK_DestinationID,
+                    DestinationName = t.Destination.Translations
+                        .Where(d => d.Language.ToLower() == lang)
+                        .Select(d => d.Name)
+                        .FirstOrDefault()
+                        ?? t.Destination.Translations.FirstOrDefault().Name,
+
+                    Names = t.Translations
+                        .Where(tr => tr.Language.ToLower() == lang)
+                        .Select(tr => tr.Name)
+                        .FirstOrDefault()
+                        ?? t.Translations.FirstOrDefault().Name,
+
+                    Descriptions = t.Translations
+                        .Where(tr => tr.Language.ToLower() == lang)
+                        .Select(tr => tr.Description)
+                        .FirstOrDefault()
+                        ?? t.Translations.FirstOrDefault().Description
+                });
+
+            var data = await dataQuery.ToListAsync();
+
+            // ✅ Count خفيف
+            int totalCount = await query.CountAsync();
+
+            return new PageinationResponse<TransferAllDto>(
+                specParams.pageIndex,
+                specParams.pageSize,
+                totalCount,
+                data
+            );
+        }
+
 
 
         public async Task<TransferDto> GetCatTransByIdAsync(string slug, string? lang = "en")
@@ -105,6 +206,14 @@ namespace TourSite.Service.Services.Trasnfers
                                 .Where(tr => tr.Language.ToLower() == lang)
                                 .Select(tr => tr.Description)
                                 .FirstOrDefault() ?? t.Translations.FirstOrDefault().Description,
+                    MetaDescription = t.Translations
+                                        .Where(tr => tr.Language.ToLower() == lang)
+                                        .Select(tr => tr.MetaDescription)
+                                        .FirstOrDefault(),
+                    MetaKeyWords = t.Translations
+                                        .Where(tr => tr.Language.ToLower() == lang)
+                                        .Select(tr => tr.MetaKeyWords)
+                                        .FirstOrDefault(),
 
                     // Included / NotIncluded / Highlights
                     Includeds = t.Includeds
@@ -217,7 +326,9 @@ namespace TourSite.Service.Services.Trasnfers
                 {
                     Language = t.Language.ToLower(),
                     Name = t.Name,
-                    Description = t.Description
+                    Description = t.Description,
+                    MetaDescription = t.MetaDescription,
+                    MetaKeyWords = t.MetaKeyWords
                 }).ToList(),
                 PricesList = TransferDto.PricesList.Select(t => new TrasnferPrices
                 {
@@ -344,6 +455,8 @@ namespace TourSite.Service.Services.Trasnfers
                 {
                     existingTranslation.Name = translationDto.Name;
                     existingTranslation.Description = translationDto.Description;
+                    existingTranslation.MetaDescription = translationDto.MetaDescription;
+                    existingTranslation.MetaKeyWords = translationDto.MetaKeyWords;
                 }
                 else
                 {
@@ -352,7 +465,9 @@ namespace TourSite.Service.Services.Trasnfers
                         TransferId=transfer.Id,
                         Language = translationDto.Language.ToLower(),
                         Name = translationDto.Name,
-                        Description = translationDto.Description
+                        Description = translationDto.Description,
+                        MetaDescription = translationDto.MetaDescription,
+                        MetaKeyWords = translationDto.MetaKeyWords
                     });
                 }
             }
@@ -435,27 +550,5 @@ namespace TourSite.Service.Services.Trasnfers
             return true;
         }
 
-        public async Task<PageinationResponse<TransferAllDto>> GetAllTransToursAdminAsync(TrasferSpecParam specParams)
-        {
-            var allowedLangs = new[] { "en", "ar" };
-            if (string.IsNullOrEmpty(specParams.Lang) || !allowedLangs.Contains(specParams.Lang.ToLower()))
-                specParams.Lang = "en";
-
-            var spec = new TrasnsferSpecificationForAdmin(specParams);
-            var allData = await unitOfWork.Repository<Transfer>().GetAllSpecAsync(spec);
-
-            if (allData is null) return null;
-
-            // ✅ استخدم AutoMapper مباشرة مع الـ language
-            var data = mapper.Map<IEnumerable<TransferAllDto>>(allData, opt =>
-                opt.Items["Lang"] = specParams.Lang.ToLower()
-            );
-
-            // Count بدون ترجمات
-            var CountSpec = new TransferWithCountSpecifications(specParams);
-            var Count = await unitOfWork.Repository<Transfer>().GetCountAsync(CountSpec);
-
-            return new PageinationResponse<TransferAllDto>(specParams.pageIndex, specParams.pageSize, Count, data);
-        }
     }
 }

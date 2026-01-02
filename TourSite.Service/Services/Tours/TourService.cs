@@ -147,6 +147,7 @@ namespace TourSite.Service.Services.Tours
                                 .Where(d => d.Language.ToLower() == lang)
                                 .Select(d => d.Name)
                                 .FirstOrDefault(),
+
                     CategoryName = t.Category.Translations
                                 .Where(c => c.Language.ToLower() == lang)
                                 .Select(c => c.Title)
@@ -199,6 +200,14 @@ namespace TourSite.Service.Services.Tours
                                 .Where(x => x.Language.ToLower() == lang)
                                 .Select(x => x.Description)
                                 .FirstOrDefault() ?? t.Translations.FirstOrDefault().Description,
+                    MetaDescription = t.Translations
+                                        .Where(x => x.Language.ToLower() == lang)
+                                        .Select(x => x.MetaDescription)
+                                        .FirstOrDefault(),
+                    MetaKeyWords = t.Translations
+                                        .Where(x => x.Language.ToLower() == lang)
+                                        .Select(x => x.MetaKeyWords)
+                                        .FirstOrDefault(),
 
                     // Destination & Category
                     DestinationName = t.Destination.Translations
@@ -209,6 +218,7 @@ namespace TourSite.Service.Services.Tours
                                         .Where(c => c.Language.ToLower() == lang)
                                         .Select(c => c.Title)
                                         .FirstOrDefault(),
+
 
                     // الصور
                     TourImgs = t.TourImgs.Select(img => new TourImgDto
@@ -327,7 +337,9 @@ namespace TourSite.Service.Services.Tours
                 {
                     Language = t.Language.ToLower(),
                     Title = t.Title,
-                    Description = t.Description
+                    Description = t.Description,
+                    MetaDescription = t.MetaDescription,
+                    MetaKeyWords = t.MetaKeyWords
                 }).ToList(),
                 Included= TourCreateDto.IncludesPoints.Select(t => new TourIncluded
                 {
@@ -508,6 +520,8 @@ namespace TourSite.Service.Services.Tours
                 {
                     existingTranslation.Title = translationDto.Title;
                     existingTranslation.Description = translationDto.Description;
+                    existingTranslation.MetaDescription = translationDto.MetaDescription;
+                    existingTranslation.MetaKeyWords = translationDto.MetaKeyWords;
                 }
                 else
                 {
@@ -516,7 +530,9 @@ namespace TourSite.Service.Services.Tours
                         Id = tour.Id,
                         Language = translationDto.Language.ToLower(),
                         Title = translationDto.Title,
-                        Description = translationDto.Description
+                        Description = translationDto.Description,
+                        MetaDescription = translationDto.MetaDescription,
+                        MetaKeyWords = translationDto.MetaKeyWords
                     });
                 }
             }

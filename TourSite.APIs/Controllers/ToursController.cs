@@ -117,13 +117,16 @@ namespace TourSite.APIs.Controllers
                     Duration = t.Duration,
                     LanguageOptions = t.LanguageOptions,
                     LinkVideo = t.LinkVideo,
+                    
 
                     Translations = t.Translations
                         .Select(tr => new TourTranslationDto
                         {
                             Language = tr.Language,
                             Title = tr.Title,
-                            Description = tr.Description
+                            Description = tr.Description,
+                            MetaDescription = tr.MetaDescription,
+                            MetaKeyWords = tr.MetaKeyWords
                         }).ToList(),
 
                     IncludedItems = t.Included

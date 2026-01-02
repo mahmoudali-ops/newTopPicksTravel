@@ -20,7 +20,8 @@ namespace TourSite.Core.DTOs.CategoryTour
         // key: "en", "ar"  |  value: text
         public string Titles { get; set; }
         public string Descriptions { get; set; }
-
+        public string? MetaDescription { get; set; }
+        public string? MetaKeyWords { get; set; }
         public string ReferneceName { get; set; }
 
 

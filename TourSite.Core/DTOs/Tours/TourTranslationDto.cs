@@ -11,5 +11,8 @@ namespace TourSite.Core.DTOs.Tours
         public string Language { get; set; } = string.Empty;
         public string Title { get; set; } = string.Empty;
         public string? Description { get; set; }
+
+        public string? MetaDescription { get; set; }
+        public string? MetaKeyWords { get; set; }
     }
 }

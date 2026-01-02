@@ -179,6 +179,14 @@ namespace TourSite.Service.Services.CatTours
                                 .Where(tr => tr.Language.ToLower() == lang)
                                 .Select(tr => tr.Title)
                                 .FirstOrDefault() ?? c.Translations.FirstOrDefault().Title,
+                    MetaKeyWords = c.Translations
+                                .Where(tr => tr.Language.ToLower() == lang)
+                                .Select(tr => tr.MetaKeyWords)
+                                .FirstOrDefault() ?? c.Translations.FirstOrDefault().MetaKeyWords,
+                    MetaDescription = c.Translations
+                                .Where(tr => tr.Language.ToLower() == lang)
+                                .Select(tr => tr.MetaDescription)
+                                .FirstOrDefault() ?? c.Translations.FirstOrDefault().MetaDescription,
 
                     Descriptions = c.Translations
                                 .Where(tr => tr.Language.ToLower() == lang)
@@ -276,7 +284,10 @@ namespace TourSite.Service.Services.CatTours
                 {
                     Language = t.Language.ToLower(),
                     Title = t.Title,
-                    Description = t.Description
+                    Description = t.Description,
+                    MetaDescription = t.MetaDescription,
+                    MetaKeyWords = t.MetaKeyWords
+
                 }).ToList()
             };
 
