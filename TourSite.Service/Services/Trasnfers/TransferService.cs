@@ -51,7 +51,7 @@ namespace TourSite.Service.Services.Trasnfers
 
         public async Task<PageinationResponse<TransferAllDto>> GetAllTransToursAsync(TrasferSpecParam specParams)
         {
-            var allowedLangs = new[] { "en", "de","nl" };
+            var allowedLangs = new[] { "en", "de","nl", "fr" };
             if (string.IsNullOrEmpty(specParams.Lang) || !allowedLangs.Contains(specParams.Lang.ToLower()))
                 specParams.Lang = "en";
 
@@ -114,7 +114,7 @@ namespace TourSite.Service.Services.Trasnfers
 
         public async Task<PageinationResponse<TransferAllDto>> GetAllTransToursAdminAsync(TrasferSpecParam specParams)
         {
-            var allowedLangs = new[] { "en", "de","nl" };
+            var allowedLangs = new[] { "en", "de","nl", "fr" };
             if (string.IsNullOrEmpty(specParams.Lang) || !allowedLangs.Contains(specParams.Lang.ToLower()))
                 specParams.Lang = "en";
 

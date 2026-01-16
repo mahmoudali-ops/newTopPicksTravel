@@ -47,7 +47,7 @@ namespace TourSite.Service.Services.Tours
 
         public async Task<PageinationResponse<TourAllDto>> GetAllToursAsync(TourSpecParams specParams )
         {
-            var allowedLangs = new[] { "en", "de" ,"nl"};
+            var allowedLangs = new[] { "en", "de" ,"nl", "fr" };
             if (string.IsNullOrEmpty(specParams.Lang) || !allowedLangs.Contains(specParams.Lang.ToLower()))
                 specParams.Lang = "en";
 
@@ -110,7 +110,7 @@ namespace TourSite.Service.Services.Tours
         public async Task<PageinationResponse<TourAllDto>> GetAllToursTrueAsync(TourSpecParams tourSpecParams)
         {
 
-            var allowedLangs = new[] { "en", "de", "nl" };
+            var allowedLangs = new[] { "en", "de", "nl", "fr" };
             if (string.IsNullOrEmpty(tourSpecParams.Lang) || !allowedLangs.Contains(tourSpecParams.Lang.ToLower()))
                 tourSpecParams.Lang = "en";
 

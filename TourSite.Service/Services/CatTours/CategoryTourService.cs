@@ -50,7 +50,7 @@ namespace TourSite.Service.Services.CatTours
 
         public async Task<PageinationResponse<CategorToutAllDto>> GetAllCatToursAsync(CatTourSpecParams specParams)
         {
-            var allowedLangs = new[] { "en", "de", "nl" };
+            var allowedLangs = new[] { "en", "de", "nl","fr" };
             if (string.IsNullOrEmpty(specParams.Lang) || !allowedLangs.Contains(specParams.Lang.ToLower()))
                 specParams.Lang = "en";
 
@@ -106,7 +106,7 @@ namespace TourSite.Service.Services.CatTours
 
         public async Task<PageinationResponse<CategorToutAllDto>> GetAllCatToursAdminAsync(CatTourSpecParams cattourSpecParams)
         {
-            var allowedLangs = new[] { "en", "de", "nl" };
+            var allowedLangs = new[] { "en", "de", "nl", "fr" };
             if (string.IsNullOrEmpty(cattourSpecParams.Lang) || !allowedLangs.Contains(cattourSpecParams.Lang.ToLower()))
                 cattourSpecParams.Lang = "en";
 
@@ -174,6 +174,7 @@ namespace TourSite.Service.Services.CatTours
                     ImageCover = $"{configuration["BaseUrl"]}{c.ImageCover}",
                     IsActive = c.IsActive,
                     ReferneceName = c.ReferneceName,
+     
 
                     Titles = c.Translations
                                 .Where(tr => tr.Language.ToLower() == lang)
@@ -206,6 +207,7 @@ namespace TourSite.Service.Services.CatTours
                                 EndLocation = t.EndLocation,
                                 ReferneceName = t.ReferneceName,
                                 IsActive=t.IsActive,
+                                LanguageOptions = t.LanguageOptions,
 
                                 ImageCover = $"{configuration["BaseUrl"]}{t.ImageCover}",
                                 Titles = t.Translations

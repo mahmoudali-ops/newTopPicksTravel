@@ -66,7 +66,7 @@ namespace TourSite.APIs.Controllers
             return Ok(new { message = "Tour Image updated successfully" });
         }
 
-        [HttpDelete("delete")]
+        [HttpDelete("delete/{id}")]
         public async Task<IActionResult> DeleteCategoryTour(int id)
         {
             if (id <= 0) return BadRequest(new APIErrerResponse(400, "Id required .. can not be less than or equal 0"));
