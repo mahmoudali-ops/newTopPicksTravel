@@ -69,7 +69,7 @@ namespace TourSite.Service.Services.Emails
             await unitOfWork.Repository<Email>().AddAsync(email);
             await unitOfWork.CompleteAsync();
 
-            await _emailSender.SendToAdminAsync(EmasilDto);
+           // await _emailSender.SendToAdminAsync(EmasilDto);
         }
 
         public async Task<bool> DeleteEmailAsync(int id)

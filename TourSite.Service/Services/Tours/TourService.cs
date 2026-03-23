@@ -291,15 +291,18 @@ namespace TourSite.Service.Services.Tours
                 // فتح الصورة باستخدام ImageSharp
                 using (var image = await Image.LoadAsync(TourCreateDto.ImageFile.OpenReadStream()))
                 {
-                    // تغيير الأبعاد
-                    image.Mutate(x => x.Resize(1600, 900));
+                    image.Mutate(x => x.Resize(new ResizeOptions
+                    {
+                        Size = new Size(1600, 900),
+                        Mode = ResizeMode.Max // 👈 يحافظ على نسبة الأبعاد
+                    }));
 
-                    // حفظ WebP بجودة ممتازة وحجم صغير جدًا
                     await image.SaveAsync(fullPath, new WebpEncoder()
                     {
                         Quality = 80
                     });
                 }
+
 
                 imagePath = $"images/tours/{fileName}";
             }
@@ -383,15 +386,18 @@ namespace TourSite.Service.Services.Tours
                     // فتح الصورة باستخدام ImageSharp
                     using (var image = await Image.LoadAsync(imgDto.ImageFile.OpenReadStream()))
                     {
-                        // تغيير الأبعاد
-                        image.Mutate(x => x.Resize(1600, 900));
+                        image.Mutate(x => x.Resize(new ResizeOptions
+                        {
+                            Size = new Size(1600, 900),
+                            Mode = ResizeMode.Max // 👈 يحافظ على نسبة الأبعاد
+                        }));
 
-                        // حفظ WebP بجودة ممتازة وحجم صغير جدًا
                         await image.SaveAsync(fullPath, new WebpEncoder()
                         {
                             Quality = 80
                         });
                     }
+
 
                     string imageUrl = $"images/tourImgs/{fileName}";
 
@@ -483,15 +489,18 @@ namespace TourSite.Service.Services.Tours
                 // فتح الصورة باستخدام ImageSharp
                 using (var image = await Image.LoadAsync(dto.ImageFile.OpenReadStream()))
                 {
-                    // تغيير الأبعاد
-                    image.Mutate(x => x.Resize(1600, 900));
+                    image.Mutate(x => x.Resize(new ResizeOptions
+                    {
+                        Size = new Size(1600, 900),
+                        Mode = ResizeMode.Max // 👈 يحافظ على نسبة الأبعاد
+                    }));
 
-                    // حفظ WebP بجودة ممتازة وحجم صغير جدًا
                     await image.SaveAsync(fullPath, new WebpEncoder()
                     {
                         Quality = 80
                     });
                 }
+
 
                 tour.ImageCover = $"images/tour/{fileName}";
             }
@@ -599,12 +608,18 @@ namespace TourSite.Service.Services.Tours
                     // 🖼️ معالجة الصورة
                     using (var image = await Image.LoadAsync(imgDto.ImageFile.OpenReadStream()))
                     {
-                        image.Mutate(x => x.Resize(1600, 900));
-                        await image.SaveAsync(fullPath, new WebpEncoder
+                        image.Mutate(x => x.Resize(new ResizeOptions
+                        {
+                            Size = new Size(1600, 900),
+                            Mode = ResizeMode.Max // 👈 يحافظ على نسبة الأبعاد
+                        }));
+
+                        await image.SaveAsync(fullPath, new WebpEncoder()
                         {
                             Quality = 80
                         });
                     }
+
 
                     string imageUrl = $"images/tourImgs/{fileName}";
 
